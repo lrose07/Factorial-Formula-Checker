@@ -1,24 +1,33 @@
+# Lauren Rose
+# ITEC 360 - Data Structures and Analysis of Algorithms
+# Department of Information Technology
+# Radford University
+#
+# This program investigates the accuracy
+# of the factorial formula:
+# (sqrt(2 * pi * n)) * (n/e)^n
 class Homework1
   def self.compute_factorial_normally(num)
     sum = 1
-    for i in 1..num
-      sum = sum * i
+
+    (1..num).each do |i|
+      sum *= i
     end
-    return sum
+
+    sum
   end
 
   def self.compute_factorial_from_formula(num)
-    return (Math.sqrt(2 * Math::PI * num) * (num / Math::E)**num).round(3)
+    (Math.sqrt(2 * Math::PI * num) * (num / Math::E)**num).round(3)
   end
 
   def self.compute_error(normal, formula)
     diff = normal - formula
-    return ((diff / normal) * 100).round(2)
+    ((diff / normal) * 100).round(2)
   end
 
   def self.print_results_table
     puts('n       n!             formula result      error')
-
     i = 1
     while i <= 15
       if i >= 10
@@ -38,13 +47,8 @@ class Homework1
       end
       error = compute_error(normal, formula)
       puts("#{error}%")
-
       i += 1
     end
   end
-
   print_results_table
-
 end
-
-# (radical 2 pi n) (n/e)^n
