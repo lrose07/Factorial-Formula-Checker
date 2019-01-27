@@ -9,11 +9,9 @@
 class Homework1
   def self.compute_factorial_normally(num)
     sum = 1
-
     (1..num).each do |i|
       sum *= i
     end
-
     sum
   end
 
