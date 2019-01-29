@@ -16,7 +16,7 @@ class Homework1
   end
 
   def self.compute_factorial_from_formula(num)
-    (Math.sqrt(2 * Math::PI * num) * (num / Math::E)**num).round(3)
+    (Math.sqrt(2 * Math::PI * num) * (num / Math::E)**num).round(2)
   end
 
   def self.compute_error(normal, formula)
@@ -24,29 +24,31 @@ class Homework1
     ((diff / normal) * 100).round(2)
   end
 
+  def self.print_header
+    print(' n      n!')
+    28.times { print(' ') }
+    print('formula result')
+    18.times { print(' ') }
+    puts('error')
+    80.times { print('-') }
+    puts("\n")
+  end
+
   def self.print_results_table
-    puts('n       n!             formula result      error')
     i = 1
-    while i <= 15
-      if i >= 10
-        print("#{i}      ")
-      else
-        print(" #{i}      ")
-      end
+    while i <= 20
+      print i >= 10 ? "#{i}      " : " #{i}      "
       normal = compute_factorial_normally(i)
       print(normal)
-      (15 - normal.to_s.size).times do
-        print(' ')
-      end
+      (30 - normal.to_s.size).times { print(' ') }
       formula = compute_factorial_from_formula(i)
       print(formula)
-      (20 - formula.to_s.size).times do
-        print(' ')
-      end
+      (32 - formula.to_s.size).times { print(' ') }
       error = compute_error(normal, formula)
       puts("#{error}%")
       i += 1
     end
   end
+  print_header
   print_results_table
 end
